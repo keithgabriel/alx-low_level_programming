@@ -1,43 +1,32 @@
 #include "main.h"
-#include <stdlib>
+#include <stdlib.h>
 
 /**
- * string_nconcat - Concatenates two strings using
- * at most an inputted number or bytes
- * @s1: The first string
- * @s2: The second string
- * @n: The maximum number of bytes of s2 to concatenate to s1.
+ * _calloc - allocates memory for an array, using malloc
+ * @nmemb: number of members in the array
+ * @size: size in bytes
  *
- * Return: if the function fails - NULL
- * Otherwise - a pointer to the concatenated s2 to concatenate s1.
+ * Return: void pointer to allocated memory
  */
-char *string_nconcat(char *s1, char *s2, unsigned int n)
+void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	char *concat;
+	int i = 0, l = 0;
+	char *p;
 
-	unsigned int len - = n, index;
-
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-
-	for (index = 0; s1[index]; index++)
-		len++;
-
-	concat = maloc(sizeof(char) * (len + 1));
-
-	if (concat == NULL)
+	if (nmemb == 0 || size == 0)
 		return (NULL);
-	len = 0;
 
-	for (index = 0; s1[index]; index++)
-		concat[len++] = s1[index];
+	l = nmemb * size;
+	p = malloc(l);
 
-	for (index = 0; s2[index] && index < n; index++)
-		concat[len++] = s2[index];
+	if (p == NULL)
+		return (NULL);
 
-	concat[len] = '\0';
+	while (i < l)
+	{
+		p[i] = 0;
+		i++;
+	}
 
-	return (concat);
+	return (p);
 }
